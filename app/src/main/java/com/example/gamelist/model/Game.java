@@ -6,10 +6,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Game {
 
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     private int id;
 
     @SerializedName("name")
@@ -26,7 +32,7 @@ public class Game {
 
     @SerializedName("involved_companies")
     @Expose
-    private List<Integer> items = new ArrayList<Integer>();
+    private List<Integer> companies = new ArrayList<Integer>();
 
     @SerializedName("summary")
     @Expose
@@ -68,14 +74,6 @@ public class Game {
         this.cover = cover;
     }
 
-    public List<Integer> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Integer> items) {
-        this.items = items;
-    }
-
     public String getSummary() {
         return summary;
     }
@@ -90,5 +88,13 @@ public class Game {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Integer> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(List<Integer> companies) {
+        this.companies = companies;
     }
 }
