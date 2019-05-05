@@ -32,7 +32,7 @@ public class GetGamesEvent {
         return games;
     }
 
-    public void setArtists(List<Game> artists) {
+    public void setGames(List<Game> artists) {
         this.games = artists;
     }
 

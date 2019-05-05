@@ -5,6 +5,7 @@ import com.example.gamelist.interactors.games.GamesInteractor;
 import com.example.gamelist.interactors.games.event.GetGamesEvent;
 import com.example.gamelist.ui.Presenter;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -25,10 +26,12 @@ public class MainPresenter extends Presenter<MainScreen> {
     @Override
     public void attachScreen(MainScreen screen) {
         super.attachScreen(screen);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void detachScreen() {
+        EventBus.getDefault().unregister(this);
         super.detachScreen();
     }
 
