@@ -2,6 +2,13 @@ package com.example.gamelist.ui;
 
 import android.content.Context;
 
+import com.example.gamelist.di.Network;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -16,6 +23,13 @@ public class UIModule {
     @Provides
     public Context provideContext() {
         return context;
+    }
+
+    @Provides
+    @Singleton
+    @Network
+    public Executor provideNetworkExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 
 }

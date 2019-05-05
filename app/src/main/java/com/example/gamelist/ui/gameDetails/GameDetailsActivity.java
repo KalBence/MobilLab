@@ -1,6 +1,6 @@
 package com.example.gamelist.ui.gameDetails;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class GameDetailsActivity extends AppCompatActivity implements GameDetailsScreen {
 

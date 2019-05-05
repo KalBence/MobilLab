@@ -30,9 +30,9 @@ public class Game {
     @Expose
     private int cover;
 
-    @SerializedName("involved_companies")
+    /*@SerializedName("involved_companies")
     @Expose
-    private List<Integer> companies = new ArrayList<Integer>();
+    private List<Integer> companies = new ArrayList<Integer>();*/
 
     @SerializedName("summary")
     @Expose
@@ -90,11 +90,11 @@ public class Game {
         this.url = url;
     }
 
-    public List<Integer> getCompanies() {
+    /*public List<Integer> getCompanies() {
         return companies;
     }
 
     public void setCompanies(List<Integer> companies) {
         this.companies = companies;
-    }
+    }*/
 }

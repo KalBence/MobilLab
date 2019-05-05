@@ -1,6 +1,6 @@
 package com.example.gamelist.ui.gameCreate;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class GameCreateActivity extends AppCompatActivity implements GameCreateScreen{
 
