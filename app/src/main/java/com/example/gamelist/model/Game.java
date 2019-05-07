@@ -42,6 +42,8 @@ public class Game {
     @Expose
     private String url;
 
+    private String CoverUrl;
+
     public int getId() {
         return id;
     }
@@ -97,4 +99,12 @@ public class Game {
     public void setCompanies(List<Integer> companies) {
         this.companies = companies;
     }*/
+
+    public String getCoverUrl() {
+        return CoverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        CoverUrl = coverUrl;
+    }
 }

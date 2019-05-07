@@ -1,5 +1,6 @@
 package com.example.gamelist.network;
 
+import com.example.gamelist.model.Cover;
 import com.example.gamelist.model.Game;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface GamesApi {
     Call<List<Game>> getGames(@Header("user-key") String authorisation, @Body RequestBody string);
 
     @POST("covers")
-    Call<List<Game>> getCover(@Header("user-key") String authorisation, @Body String string);
+    Call<List<Cover>> getCover(@Header("user-key") String authorisation, @Body RequestBody string);
 }

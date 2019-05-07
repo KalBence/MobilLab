@@ -34,9 +34,9 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Game game = gamesList.get(position);
-        /*if (game.getImages().size() > 0) {
-            Glide.with(context).load(artist.getImages().get(0).getUrl()).into(holder.ivImage);
-        }*/
+        if (game.getCoverUrl() != null) {
+            Glide.with(context).load(game.getCoverUrl()).into(holder.ivImage);
+        }
         holder.tvName.setText(game.getName());
         String rating = "N/A";
         if (game.getRating() != null)

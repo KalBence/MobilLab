@@ -19,7 +19,7 @@ public class MockGamesApi implements GamesApi {
         final List<Game> mockResult = new ArrayList<Game>();
 
         Game game = new Game();
-        game.setRating(12);
+        game.setRating(12.0);
         game.setName("Lord od the rings Online");
         game.setId(123456);
         game.setSummary("just a lotr game");

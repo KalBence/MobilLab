@@ -2,6 +2,7 @@ package com.example.gamelist.interactors.games;
 
 import com.example.gamelist.GameListApplication;
 import com.example.gamelist.interactors.games.event.GetGamesEvent;
+import com.example.gamelist.model.Cover;
 import com.example.gamelist.model.Game;
 import com.example.gamelist.network.GamesApi;
 
@@ -40,6 +41,22 @@ public class GamesInteractor {
             if (response.code() != 200) {
                 throw new Exception("Result code is not 200");
             }
+
+            for (Game game : response.body()) {
+                if (game.getCover() == 0)
+                    continue;
+                String coverText = "fields url; where id = " + game.getId() + ";";
+                RequestBody coverBody =
+                        RequestBody.create(MediaType.parse("text/plain"), coverText);
+                Call<List<Cover>> coverCall = gamesApi.getCover(API_KEY, coverBody);
+                Response<List<Cover>> coverResponse = coverCall.execute();
+                if (coverResponse.body().isEmpty()) {
+                    game.setCoverUrl("https://via.placeholder.com/150x150");
+                    continue;
+                }
+                game.setCoverUrl("https:" + coverResponse.body().get(0).getUrl());
+            }
+
             event.setCode(response.code());
             event.setGames(response.body());
             EventBus.getDefault().post(event);
