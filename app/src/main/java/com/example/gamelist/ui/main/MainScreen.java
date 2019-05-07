@@ -13,4 +13,6 @@ public interface MainScreen {
 
     //navigates to the create new game view
     void CreateNewGame();
+
+    void showNetworkError(String errorMsg);
 }

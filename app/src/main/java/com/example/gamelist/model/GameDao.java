@@ -24,4 +24,7 @@ public interface GameDao {
 
     @Query("DELETE FROM game")
     void deleteAll();
+
+    @Insert
+    void insertAll(List<Game> games);
 }

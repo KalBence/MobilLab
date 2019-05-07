@@ -21,8 +21,12 @@ public class GameRepository {
         return mAllGames;
     }
 
-    public void insert (Game word) {
-        new insertAsyncTask(mGameDao).execute(word);
+    public void insert (Game game) {
+        new insertAsyncTask(mGameDao).execute(game);
+    }
+
+    public void insertAll(List<Game> games) {
+        new insertAllAsyncTask(mGameDao).execute(games);
     }
 
     private static class insertAsyncTask extends AsyncTask<Game, Void, Void> {
@@ -36,6 +40,21 @@ public class GameRepository {
         @Override
         protected Void doInBackground(final Game... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertAllAsyncTask extends AsyncTask<List<Game>, Void, Void> {
+
+        private GameDao mAsyncTaskDao;
+
+        insertAllAsyncTask(GameDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final List<Game>... params) {
+            mAsyncTaskDao.insertAll(params[0]);
             return null;
         }
     }

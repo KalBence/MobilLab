@@ -24,7 +24,7 @@ public class Game {
 
     @SerializedName("rating")
     @Expose
-    private int rating;
+    private Integer rating;
 
     @SerializedName("cover")
     @Expose
@@ -58,11 +58,11 @@ public class Game {
         this.name = name;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
