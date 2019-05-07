@@ -29,7 +29,7 @@ public class GamesInteractor {
     }
 
     public void GetGames() {
-        String text = "fields name,rating,cover,involved_companies,summary,url;";
+        String text = "fields name,rating,cover,involved_companies,summary,url; limit 30; where rating > 75;";
         RequestBody body =
                 RequestBody.create(MediaType.parse("text/plain"), text);
 
