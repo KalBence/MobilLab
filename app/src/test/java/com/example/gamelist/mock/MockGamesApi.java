@@ -1,5 +1,6 @@
 package com.example.gamelist.mock;
 
+import com.example.gamelist.model.Cover;
 import com.example.gamelist.model.Game;
 import com.example.gamelist.network.GamesApi;
 
@@ -20,7 +21,7 @@ public class MockGamesApi implements GamesApi {
 
         Game game = new Game();
         game.setRating(12.0);
-        game.setName("Lord od the rings Online");
+        game.setName("Lord of the rings Online");
         game.setId(123456);
         game.setSummary("just a lotr game");
         game.setUrl("www.game.com");
@@ -69,7 +70,7 @@ public class MockGamesApi implements GamesApi {
     }
 
     @Override
-    public Call<List<Game>> getCover(String authorisation, String string) {
+    public Call<List<Cover>> getCover(String authorisation, RequestBody string) {
         return null;
     }
 }

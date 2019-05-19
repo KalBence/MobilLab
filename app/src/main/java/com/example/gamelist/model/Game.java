@@ -15,7 +15,7 @@ public class Game {
 
     @SerializedName("id")
     @Expose
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @SerializedName("name")

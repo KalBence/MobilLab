@@ -29,8 +29,8 @@ public class GamesInteractor {
         GameListApplication.injector.inject(this);
     }
 
-    public void GetGames() {
-        String text = "fields name,rating,cover,involved_companies,summary,url; limit 10; where rating > 75; sort popularity desc;";
+    public void GetGames(String query) {
+        String text = query;
         RequestBody body =
                 RequestBody.create(MediaType.parse("text/plain"), text);
 
@@ -45,7 +45,7 @@ public class GamesInteractor {
             for (Game game : response.body()) {
                 if (game.getCover() == 0)
                     continue;
-                String coverText = "fields url; where id = " + game.getId() + ";";
+                String coverText = "fields url; where id = " + game.getCover() + ";";
                 RequestBody coverBody =
                         RequestBody.create(MediaType.parse("text/plain"), coverText);
                 Call<List<Cover>> coverCall = gamesApi.getCover(API_KEY, coverBody);

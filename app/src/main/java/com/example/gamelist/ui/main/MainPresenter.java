@@ -39,7 +39,7 @@ public class MainPresenter extends Presenter<MainScreen> {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                gamesInteractor.GetGames();
+                gamesInteractor.GetGames("fields name,rating,cover,involved_companies,summary,url; limit 10; where rating > 75; sort popularity desc;");
             }
         });
     }
