@@ -65,6 +65,8 @@ public abstract  class GameDatabase extends RoomDatabase {
             game.setId(1);
             game.setName("League of Legends");
             game.setRating(33.0);
+            game.setSummary("Lorem Ipsum");
+            game.setUrl("www.leagueoflegends.com");
             mDao.insert(game);
             return null;
         }

@@ -5,6 +5,7 @@ import com.example.gamelist.network.NetworkModule;
 import com.example.gamelist.ui.UIModule;
 import com.example.gamelist.ui.gameCreate.GameCreateActivity;
 import com.example.gamelist.ui.gameDetails.GameDetailsActivity;
+import com.example.gamelist.ui.gameDetails.GameDetailsPresenter;
 import com.example.gamelist.ui.main.MainActivity;
 import com.example.gamelist.ui.main.MainPresenter;
 
@@ -24,5 +25,7 @@ public interface GameListApplicationComponent {
     void inject(GamesInteractor interactor);
 
     void inject(MainPresenter mainPresenter);
+
+    void inject(GameDetailsPresenter detailsPresenter);
 
 }

@@ -1,7 +1,12 @@
 package com.example.gamelist.ui.gameDetails;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.gamelist.GameListApplication;
 import com.example.gamelist.R;
 import com.example.gamelist.model.Game;
 import com.example.gamelist.model.GameViewModel;
@@ -19,7 +24,10 @@ public class GameDetailsActivity extends AppCompatActivity implements GameDetail
     GameDetailsPresenter detailsPresenter;
 
     private GameViewModel mGameViewModel;
-    private Game selectedGame;
+
+    public GameDetailsActivity()  {
+        GameListApplication.injector.inject(this);
+    }
 
     @Override
     protected void onStart() {
@@ -36,14 +44,29 @@ public class GameDetailsActivity extends AppCompatActivity implements GameDetail
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_details);
         mGameViewModel = ViewModelProviders.of(this).get(GameViewModel.class);
-        //selectedGame = mGameViewModel.getAllGames().getValue().get(id);
-    }
 
-    @Override
-    public void NavigateBack() {
-        //TODO: navigate back
+        String name =  getIntent().getStringExtra("name");
+        Double rating =  getIntent().getDoubleExtra("rating", 0.0);
+        String imageUrl =  getIntent().getStringExtra("imageUrl");
+        String summary =  getIntent().getStringExtra("summary");
+        String webpage = getIntent().getStringExtra("webpage");
+
+        ImageView ivImage = findViewById(R.id.ivImage);
+        if (imageUrl != null) {
+            Glide.with(this).load(imageUrl).into(ivImage);
+        }
+
+        TextView tvName = findViewById(R.id.tvName);
+        tvName.setText(name);
+        TextView tvRating = findViewById(R.id.tvRating);
+        tvRating.setText(Double.toString(rating));
+        TextView tvSummary = findViewById(R.id.tvSummary);
+        tvSummary.setText(summary);
+        tvSummary.setMovementMethod(new ScrollingMovementMethod());
+        TextView tvWebpage = findViewById(R.id.tvWebpage);
+        tvWebpage.setText(webpage);
     }
 
     @Override

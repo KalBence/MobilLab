@@ -1,0 +1,120 @@
+swagger: "2.0"
+info:
+  description: "IGDB API description"
+  version: "1.0.0"
+  title: "IGDB API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api-v3.igdb.com"
+tags:
+- name: "games"
+  description: "IGDB API"
+  externalDocs:
+    description: "Find out more"
+    url: "https://api-docs.igdb.com"
+schemes:
+- "https"
+- "http"
+paths:
+  /games:
+    post:
+      tags:
+      - "games"
+      summary: "Gets game list"
+      description: "Gets game list. Query parameters have to be passed in body"
+      operationId: "findGames"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "name of fields to be included in answer"
+        required: true
+        schema:
+          format: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Game"
+        400:
+          description: "Invalid status value"
+      security:
+        - api_key: []
+  /covers:
+    post:
+      tags:
+      - "games"
+      summary: "Gets cover list"
+      description: "Gets game list  Query parameters have to be passed in body"
+      operationId: "findCover"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "name of fields to be included in answer"
+        required: true
+        schema:
+          format: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Cover"
+        400:
+          description: "Invalid status value"
+      security:
+        - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "user-key"
+    in: "header"
+definitions:
+  Game:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "League of Legends"
+      rating:
+        type: "integer"
+        example: "45"
+      cover:
+        type: "string"
+        example: "id of cover"
+      involved_companies:
+        type: "string"
+        example: "Riot Games"
+      summary:
+        type: "string"
+        example: "summary"
+      url:
+        type: "string"
+        example: "website of game"
+  Cover:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      url:
+        type: "string"
+        example: "Cover URL"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
