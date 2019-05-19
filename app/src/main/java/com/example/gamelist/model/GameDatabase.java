@@ -59,7 +59,7 @@ public abstract  class GameDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            mDao.deleteAll();
+            /*mDao.deleteAll();
 
             Game game = new Game();
             game.setId(1);
@@ -67,7 +67,7 @@ public abstract  class GameDatabase extends RoomDatabase {
             game.setRating(33.0);
             game.setSummary("Lorem Ipsum");
             game.setUrl("www.leagueoflegends.com");
-            mDao.insert(game);
+            mDao.insert(game);*/
             return null;
         }
     }
